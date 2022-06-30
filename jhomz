@@ -302,31 +302,31 @@ echo "This step will take a few minutes.. please be patient"
 echo "${YELLOW}Skipping....${NC}"
 mkdir -p /var/www/html/downloads/
 cd /var/www/html/downloads/
-wget -q ${URL_FULLCLIENT}
-unzip -qq client.zip
-rm client.zip
-mkdir -p /var/www/html/downloads/client/data/
-echo "<?xml version=\"1.0\" encoding=\"euc-kr\" ?>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "<clientinfo>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "	<desc>Ragnarok Client Information</desc>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "	<servicetype>korea</servicetype>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "	<servertype>primary</servertype>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "	<connection>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "		<display>Ragnarok Online</display>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "      		<address>${SERVER_IP}</address>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "      		<port>6900</port>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "      		<version>55</version>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "      		<langtype>1</langtype>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "		<loading>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "			<image>loading00.jpg</image>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "			<image>loading01.jpg</image>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "		</loading>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "		<aid>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "			<admin>2000000</admin>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "		</aid>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "   	</connection>" >> /var/www/html/downloads/client/data/clientinfo.xml
-echo "</clientinfo>" >> /var/www/html/downloads/client/data/clientinfo.xml
-cd /var/www/html/downloads/client/
+#wget -q ${URL_FULLCLIENT}
+#unzip -qq client.zip
+#rm client.zip
+#mkdir -p /var/www/html/downloads/client/data/
+#echo "<?xml version=\"1.0\" encoding=\"euc-kr\" ?>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "<clientinfo>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "	<desc>Ragnarok Client Information</desc>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "	<servicetype>korea</servicetype>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "	<servertype>primary</servertype>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "	<connection>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "		<display>Ragnarok Online</display>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "      		<address>${SERVER_IP}</address>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "      		<port>6900</port>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "      		<version>55</version>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "      		<langtype>1</langtype>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "		<loading>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "			<image>loading00.jpg</image>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "			<image>loading01.jpg</image>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "		</loading>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "		<aid>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "			<admin>2000000</admin>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "		</aid>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "   	</connection>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#echo "</clientinfo>" >> /var/www/html/downloads/client/data/clientinfo.xml
+#cd /var/www/html/downloads/client/
 #wget -q https://<url>/ragnainstaller_scripts/roclient.exe
 
 # use rsu.pack to create client grf
@@ -426,5 +426,7 @@ echo "After FluxCP installation, full installer will be available via your site.
 echo ""
 echo "${BLUE}You can now login via VNC and click Start rAthena on the desktop.${NC}"
 echo "${YELLOW}*****************************************************************${NC}"
-rm /root/jhomz
+rm /home/jhomz
+rm /home/google-chrome-stable_current_amd64.deb
+rm /home/createuser.zip
 exit 0
