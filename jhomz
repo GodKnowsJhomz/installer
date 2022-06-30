@@ -1,8 +1,8 @@
 #!/bin/bash
-# fenrirmachine Installer - created and maintained by gamingmagic
+# ragnainstaller Installer - created and maintained and updated by godknowsjhomz
 # General
 DEV=0
-INSTALLER_VERSION="v1.2.08"
+INSTALLER_VERSION="v1.2.1"
 STEPS=18
 # Colors
 BLUE='\033[0;36m'
@@ -13,7 +13,7 @@ NC='\033[0m'
 # Credentials
 USERID=$(date +%s | sha256sum | base64 | head -c 3 ; echo)
 USERPASS=$(date +%s | sha256sum | base64 | head -c 6 ; echo)
-RATHENAPASS="princess21"
+RATHENAPASS="Hv46TmDkbg"
 RAGSQLPASS=$(date +%s | sha256sum | base64 | head -c 10 ; echo)
 
 # URLs
@@ -32,7 +32,7 @@ else
 fi
 
 echo "\033c"
-echo "Welcome to ${BLUE}fenrirmachine${NC}, an unattended installer by gamingmagic"
+echo "Welcome to ${BLUE}Ragnarok Installer${NC}, an unattended installer"
 echo "Version: ${VERSION}\n"
 echo "This script will now begin to install stuff on your system. Please be patient as this could take a while!\n"
 
@@ -58,7 +58,7 @@ bash -c 'debconf-set-selections <<< "mariadb-server mariadb-server/root_password
 bash -c 'debconf-set-selections <<< "mariadb-server mariadb-server/root_password_again password ragnarok"'
 
 apt-get -qy install mariadb-server
-wget -q https://raw.githubusercontent.com/gamingmagic/unattended-installer/master/msi.sh
+wget -q https://raw.githubusercontent.com/GodKnowsJhomz/installer/main/msi.sh
 chmod +x msi.sh
 ./msi.sh
 rm msi.sh
@@ -100,7 +100,7 @@ echo ""
 echo "${BLUE}Step 7/${STEPS}:${NC} Creating User: rathena"
 echo "${YELLOW}This process is automatic and doesn't require user input.${NC}"
 echo "${YELLOW}Please do not type at the password prompt.${NC}"
-wget -q https://github.com/gamingmagic/unattended-installer/raw/master/createuser.zip
+wget -q https://github.com/GodKnowsJhomz/installer/raw/main/createuser.zip
 unzip -qq createuser.zip
 chmod +x createuser.sh
 ./createuser.sh $RATHENAPASS
@@ -111,14 +111,14 @@ echo ""
 
 
 echo "${BLUE}Step 8/${STEPS}:${NC} Setting Up Desktop Stuff"
-mkdir -p /usr/share/fenrirmachine/
-cd /usr/share/fenrirmachine/
-wget -q https://github.com/gamingmagic/unattended-installer/raw/master/files.zip
+mkdir -p /usr/share/ragnainstaller/
+cd /usr/share/ragnainstaller/
+wget -q https://github.com/GodKnowsJhomz/installer/raw/main/files.zip
 unzip -qq files.zip
 cd links
 mkdir -p /home/rathena/Desktop
 cp -R * /home/rathena/Desktop
-cd /usr/share/fenrirmachine/scripts
+cd /usr/share/ragnainstaller/scripts
 chmod +x *
 cd /home/rathena/Desktop
 chmod +x *
@@ -128,11 +128,11 @@ echo ""
 
 echo "${BLUE}Step 9/${STEPS}:${NC} Creating VNC Server Start-up Files"
 cd /usr/local/bin
-wget -q https://github.com/gamingmagic/unattended-installer/raw/master/myvncserver.zip
+wget -q https://github.com/GodKnowsJhomz/installer/raw/main/myvncserver.zip
 unzip -qq myvncserver.zip
 chmod +x myvncserver
 cd /lib/systemd/system/
-wget -q https://github.com/gamingmagic/unattended-installer/raw/master/myvncserver2.zip
+wget -q https://github.com/GodKnowsJhomz/installer/raw/main/myvncserver2.zip
 unzip -qq myvncserver2.zip
 systemctl daemon-reload
 systemctl enable myvncserver2.service
@@ -140,11 +140,11 @@ echo ""
 
 
 
-echo "${BLUE}Step 10/${STEPS}:${NC} Installing fenrirmachine Files"
+echo "${BLUE}Step 10/${STEPS}:${NC} Installing Ragnarok Installer Files"
 chown -R rathena:rathena /home/rathena
-chown -R rathena:rathena /usr/share/fenrirmachine
+chown -R rathena:rathena /usr/share/ragnainstaller
 cd /home/rathena
-sudo -u rathena sh -c "wget -q https://github.com/gamingmagic/unattended-installer/raw/master/vnc.zip"
+sudo -u rathena sh -c "wget -q https://github.com/GodKnowsJhomz/installer/raw/main/vnc.zip"
 sudo -u rathena sh -c "unzip -qq vnc.zip"
 sudo -u rathena sh -c "chmod +x vnc.sh"
 sudo -u rathena sh -c "./vnc.sh $RATHENAPASS"
@@ -161,10 +161,10 @@ echo "        <property name=\"brightness\" type=\"empty\"/>" >> /home/rathena/.
 echo "        <property name=\"color1\" type=\"empty\"/>" >> /home/rathena/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
 echo "        <property name=\"color2\" type=\"empty\"/>" >> /home/rathena/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
 echo "        <property name=\"color-style\" type=\"empty\"/>" >> /home/rathena/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
-echo "        <property name=\"image-path\" type=\"string\" value=\"/usr/share/fenrirmachine/img/bg.png\"/>" >> /home/rathena/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
+echo "        <property name=\"image-path\" type=\"string\" value=\"/usr/share/ragnainstaller/img/bg.png\"/>" >> /home/rathena/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
 echo "        <property name=\"image-show\" type=\"empty\"/>" >> /home/rathena/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
 echo "        <property name=\"last-image\" type=\"empty\"/>" >> /home/rathena/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
-echo "        <property name=\"last-single-image\" type=\"string\" value=\"/usr/share/fenrirmachine/img/bg.png\"/>" >> /home/rathena/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
+echo "        <property name=\"last-single-image\" type=\"string\" value=\"/usr/share/ragnainstaller/img/bg.png\"/>" >> /home/rathena/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
 echo "      </property>" >> /home/rathena/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
 echo "    </property>" >> /home/rathena/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
 echo "  </property>" >> /home/rathena/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
@@ -203,7 +203,7 @@ echo ""
 
 echo "${BLUE}Step 13/${STEPS}:${NC} Creating MySQL Database"
 mysqladmin -u root -pragnarok create ragnarok
-mysql -u root -pragnarok -e "CREATE USER ragnarok@localhost IDENTIFIED BY 'princess21';"
+mysql -u root -pragnarok -e "CREATE USER ragnarok@localhost IDENTIFIED BY 'Hv46TmDkbg';"
 mysql -u root -pragnarok -e "GRANT ALL PRIVILEGES ON ragnarok.* TO 'ragnarok'@'localhost';"
 mysql -u root -pragnarok -e "FLUSH PRIVILEGES;"
 mysql -u root -pragnarok ragnarok  < /home/rathena/Desktop/rAthena/sql-files/main.sql
@@ -222,7 +222,7 @@ mysql -u root -pragnarok ragnarok  < /home/rathena/Desktop/rAthena/sql-files/mob
 mysql -u root -pragnarok ragnarok  < /home/rathena/Desktop/rAthena/sql-files/mob_skill_db2.sql
 mysql -u root -pragnarok ragnarok  < /home/rathena/Desktop/rAthena/sql-files/mob_skill_db2_re.sql
 mysql -u root -pragnarok ragnarok  < /home/rathena/Desktop/rAthena/sql-files/mob_skill_db_re.sql
-mysql -u root -pragnarok -e "USE ragnarok; UPDATE login SET userid = '${USERID}', user_pass = 'princess21' where sex = 'S';"
+mysql -u root -pragnarok -e "USE ragnarok; UPDATE login SET userid = '${USERID}', user_pass = 'Hv46TmDkbg' where sex = 'S';"
 echo ""
 
 
@@ -231,7 +231,7 @@ echo "${BLUE}Step 14/${STEPS}:${NC} Configuring FluxCP"
 rm /var/www/html/index.html
 git clone -q ${URL_FLUXGIT} /var/www/html/
 cd /var/www/html/
-wget -q https://raw.githubusercontent.com/gamingmagic/unattended-installer/master/diff.diff
+wget -q https://raw.githubusercontent.com/GodKnowsJhomz/installer/main/diff.diff
 echo "diff --git a/config/application.php b/config/application.php" >> /var/www/html/diff.diff
 echo "--- a/config/application.php" >> /var/www/html/diff.diff
 echo "+++ b/config/application.php" >> /var/www/html/diff.diff
@@ -252,7 +252,7 @@ echo " 				// -- It specifies the encoding to convert your MySQL data to on the 
 echo " 			'Hostname'   => '127.0.0.1'," >> /var/www/html/diff.diff
 echo " 			'Username'   => 'ragnarok'," >> /var/www/html/diff.diff
 echo "-			'Password'   => 'ragnarok'," >> /var/www/html/diff.diff
-echo "+			'Password'   => 'princess21'," >> /var/www/html/diff.diff
+echo "+			'Password'   => 'Hv46TmDkbg'," >> /var/www/html/diff.diff
 echo " 			'Database'   => 'ragnarok'," >> /var/www/html/diff.diff
 echo " 			'Persistent' => true," >> /var/www/html/diff.diff
 echo " 			'Timezone'   => null // Example: '+0:00' is UTC." >> /var/www/html/diff.diff
@@ -261,7 +261,7 @@ echo " 				// -- It specifies the encoding to convert your MySQL data to on the 
 echo " 			'Hostname'   => '127.0.0.1'," >> /var/www/html/diff.diff
 echo " 			'Username'   => 'ragnarok'," >> /var/www/html/diff.diff
 echo "-			'Password'   => 'ragnarok'," >> /var/www/html/diff.diff
-echo "+			'Password'   => 'princess21'," >> /var/www/html/diff.diff
+echo "+			'Password'   => 'Hv46TmDkbg'," >> /var/www/html/diff.diff
 echo " 			'Database'   => 'ragnarok'," >> /var/www/html/diff.diff
 echo " 			'Persistent' => true," >> /var/www/html/diff.diff
 echo " 			'Timezone'   => null // Possible values is as described in the comment in DbConfig." >> /var/www/html/diff.diff
@@ -327,7 +327,7 @@ echo "		</aid>" >> /var/www/html/downloads/client/data/clientinfo.xml
 echo "   	</connection>" >> /var/www/html/downloads/client/data/clientinfo.xml
 echo "</clientinfo>" >> /var/www/html/downloads/client/data/clientinfo.xml
 cd /var/www/html/downloads/client/
-#wget -q https://<url>/fenrirmachine_scripts/roclient.exe
+#wget -q https://<url>/ragnainstaller_scripts/roclient.exe
 
 # use rsu.pack to create client grf
 
@@ -336,40 +336,40 @@ zip -qqrm fullclient.zip client
 cd /var/www/html/downloads/
 rm -rf client/
 cd /var/www/html/data/schemas/logindb/
-wget -q https://raw.githubusercontent.com/gamingmagic/unattended-installer/master/cp_cmspages.20170808161901.sql
+wget -q https://raw.githubusercontent.com/GodKnowsJhomz/installer/main/cp_cmspages.20170808161901.sql
 chown -R www-data:www-data /var/www/html
 cd /home/
 
 
 
 echo "${BLUE}Step 17/${STEPS}:${NC} Preparing auto-config import files"
-echo "//fenrirmachine\n" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/char_conf.txt
+echo "//ragnainstaller\n" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/char_conf.txt
 echo "userid: ${USERID}" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/char_conf.txt
-echo "passwd: princess21" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/char_conf.txt
+echo "passwd: Hv46TmDkbg" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/char_conf.txt
 echo "char_ip: ${SERVER_IP}" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/char_conf.txt
 
-echo "//fenrirmachine\n" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/map_conf.txt
+echo "//ragnainstaller\n" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/map_conf.txt
 echo "userid: ${USERID}" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/map_conf.txt
-echo "passwd: princess21" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/map_conf.txt
+echo "passwd: Hv46TmDkbg" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/map_conf.txt
 echo "map_ip: ${SERVER_IP}" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/map_conf.txt
 
-echo "//fenrirmachine\n" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/inter_conf.txt
+echo "//ragnainstaller\n" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/inter_conf.txt
 echo "//use_sql_db: yes" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/inter_conf.txt
-echo "login_server_pw: princess21" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/inter_conf.txt
-echo "ipban_db_pw: princess21" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/inter_conf.txt
-echo "char_server_pw: princess21" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/inter_conf.txt
-echo "map_server_pw: princess21" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/inter_conf.txt
-echo "log_db_pw: princess21" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/inter_conf.txt
+echo "login_server_pw: Hv46TmDkbg" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/inter_conf.txt
+echo "ipban_db_pw: Hv46TmDkbg" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/inter_conf.txt
+echo "char_server_pw: Hv46TmDkbg" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/inter_conf.txt
+echo "map_server_pw: Hv46TmDkbg" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/inter_conf.txt
+echo "log_db_pw: Hv46TmDkbg" >> /home/rathena/Desktop/rAthena/conf/import-tmpl/inter_conf.txt
 echo ""
 
 touch /home/rathena/Desktop/Info.txt
-echo "fenrirmachine\n" >> /home/rathena/Desktop/Info.txt
+echo "ragnainstaller\n" >> /home/rathena/Desktop/Info.txt
 echo "Server IP: ${SERVER_IP}\n" >> /home/rathena/Desktop/Info.txt
 echo "-- MySQL --" >> /home/rathena/Desktop/Info.txt
 echo "root password is 'ragnarok', but can only be accessed locally from this system." >> /home/rathena/Desktop/Info.txt
 echo "For all other MySQL uses, please use the following credentials:" >> /home/rathena/Desktop/Info.txt
 echo "User: ragnarok" >> /home/rathena/Desktop/Info.txt
-echo "Password: princess21\n" >> /home/rathena/Desktop/Info.txt
+echo "Password: Hv46TmDkbg\n" >> /home/rathena/Desktop/Info.txt
 
 echo "-- SSH User --" >> /home/rathena/Desktop/Info.txt
 echo "User: rathena" >> /home/rathena/Desktop/Info.txt
@@ -413,11 +413,11 @@ echo "Server IP: ${SERVER_IP}"
 echo ""
 echo "${GREEN} -- MySQL Stuff${NC}"
 echo "MySQL user: ragnarok"
-echo "MySQL password: princess21"
+echo "MySQL password: Hv46TmDkbg"
 echo "phpMyAdmin: http://${SERVER_IP}/phpmyadmin"
 echo ""
 echo "${GREEN} -- VNC Stuff${NC}"
-echo "VNC Password: princess21"
+echo "VNC Password: Hv46TmDkbg"
 
 echo ""
 echo "${GREEN} -- FluxCP Stuff${NC}"
@@ -426,5 +426,5 @@ echo "After FluxCP installation, full installer will be available via your site.
 echo ""
 echo "${BLUE}You can now login via VNC and click Start rAthena on the desktop.${NC}"
 echo "${YELLOW}*****************************************************************${NC}"
-rm /home/cerv
+rm /root/jhomz
 exit 0
