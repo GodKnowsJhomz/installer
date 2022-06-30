@@ -7,7 +7,7 @@ An automated rAthena Emulator Unattended Installer made by Cervantes (vhostrocks
 
 ## Server Requirements
 
-Here are the system requirements for the Ragnarok Installer for your server:
+Here are the system requirements for the Ragnarok Installer :
 
 ![RAM](https://img.shields.io/badge/OS-Debian%2010-red.svg?)
 ![RAM](https://img.shields.io/badge/Memory-2%20GB-green.svg?)
