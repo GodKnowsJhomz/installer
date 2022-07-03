@@ -276,10 +276,10 @@ echo ""
 
 
 echo "${BLUE}Step 15/${STEPS}:${NC} Installing phpMyAdmin"
-wget -q https://files.phpmyadmin.net/phpMyAdmin/4.7.3/phpMyAdmin-4.7.3-english.zip
-unzip -qq phpMyAdmin-4.7.3-english.zip
-rm phpMyAdmin-4.7.3-english.zip
-mv phpMyAdmin-4.7.3-english phpmyadmin
+wget -q https://files.phpmyadmin.net/phpMyAdmin/5.2.0/phpMyAdmin-5.2.0-english.zip
+unzip -qq phpMyAdmin-5.2.0-english.zip
+rm phpMyAdmin-5.2.0-english.zip
+mv phpMyAdmin-5.2.0-english phpmyadmin
 cd phpmyadmin
 mv config.sample.inc.php config.inc.php
 echo "<?php" > /var/www/html/phpmyadmin/config.inc.php
