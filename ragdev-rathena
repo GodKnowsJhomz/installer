@@ -93,7 +93,7 @@ echo "${BLUE}Step 6/${STEPS}:${NC} Installing rA specific packages"
 echo " * Installing git, make, g++"
 apt-get -qy install git make libmariadb-dev libmariadbclient-dev libmariadbclient-dev-compat > /dev/null
 echo " * Installing Utilities"
-apt-get -qy install zlib1g-dev libpcre3-dev nano zip unzip zenity gcc g++ > /dev/null
+apt-get -qy install zlib1g-dev libpcre3-dev nano zip unzip zenity gcc g++ xterm > /dev/null
 echo ""
 
 
