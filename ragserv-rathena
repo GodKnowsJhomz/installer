@@ -1,9 +1,9 @@
 #!/bin/bash
-# RagDev Automated Installer - https://www.ragdev.com/
+# RagServ Automated Installer - https://www.ragserv.com/
 # General
 DEV=0
-INSTALLER_NAME="RagDev - https://www.ragdev.com"
-INSTALLER_VERSION="v1.0.0"
+INSTALLER_NAME="RagServ - https://www.ragserv.com"
+INSTALLER_VERSION="v1.0.9"
 STEPS=17
 # Colors
 BLUE='\033[0;36m'
@@ -32,7 +32,7 @@ else
 fi
 
 echo "\033c"
-echo "Welcome to ${BLUE}RagDev Automated Installer${NC}, an unattended installer"
+echo "Welcome to ${BLUE}RagServ Automated Installer${NC}, an unattended installer"
 echo "Version: ${VERSION}\n"
 echo "This script will now begin to install stuff on your system. Please be patient as this could take a while!\n"
 
@@ -434,7 +434,7 @@ echo "After FluxCP installation, full installer will be available via your site.
 echo ""
 echo "${BLUE}You can now login via VNC and click Start rAthena on the desktop.${NC}"
 echo "${YELLOW}*****************************************************************${NC}"
-rm /home/ragdev-rathena
+rm /home/ragserv-rathena
 rm /home/google-chrome-stable_current_amd64.deb
 rm /home/createuser.zip
 exit 0
