@@ -17,5 +17,12 @@ Here are the system requirements for the Ragnarok Installer :
 To install Ragnarok Installer in your server you must run this command as root user:
 
 ```bash
-  apt update && apt-get -y install curl && cd /home && curl -o ragdev-rathena -L https://raw.githubusercontent.com/GodKnowsJhomz/installer/master/ragdev-rathena && sh ragdev-rathena
+apt update && apt-get -y install curl && cd /home && curl -o ragdev-rathena -L https://raw.githubusercontent.com/GodKnowsJhomz/installer/master/ragdev-rathena && sh ragdev-rathena
+```
+## VNC Allowing IP
+
+To allow your current ip to access VNC Server you must run this command ass root user:
+
+```bash
+wget -qO - https://raw.githubusercontent.com/GodKnowsJhomz/installer/main/ipallowed-vnc | bash
 ```
