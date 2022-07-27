@@ -17,6 +17,5 @@ Here are the system requirements for the Ragnarok Installer :
 To install Ragnarok Installer in your server you must run this command as root user:
 
 ```bash
-  apt update && apt-get -y install curl && cd /home && curl -o jhomz -L https://raw.githubusercontent.com/GodKnowsJhomz/installer/master/jhomz && sh jhomz
+  apt update && apt-get -y install curl && cd /home && curl -o ragdev-rathena -L https://raw.githubusercontent.com/GodKnowsJhomz/installer/master/ragdev-rathena && sh ragdev-rathena
 ```
-
