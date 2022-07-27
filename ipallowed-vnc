@@ -1,0 +1,88 @@
+#!/bin/bash RAGSERV
+clear
+echo "______            _____                ______ _   _ ";
+echo "| ___ \          /  ___|               | ___ \ | | |";
+echo "| |_/ /__ _  __ _\ `--.  ___ _ ____   _| |_/ / |_| |";
+echo "|    // _` |/ _` |`--. \/ _ \ '__\ \ / /  __/|  _  |";
+echo "| |\ \ (_| | (_| /\__/ /  __/ |   \ V /| |   | | | |";
+echo "\_| \_\__,_|\__, \____/ \___|_|    \_/ \_|   \_| |_/";
+echo "             __/ |                                  ";
+echo "            |___/                                   ";
+echo "Website: www.ragserv.com                            ";
+echo "Discord Support: -R#9305                            ";
+echo "facebook: https://www.facebook.com/RagServPH/       ";
+echo "RAGSERV SUPPORT || RAGSERV PH";
+echo "___________________________________________________";
+
+RED=`tput setaf 1`
+GREEN=`tput setaf 2`
+YELLOW=`tput setaf 3`
+BLUE=`tput setaf 4`
+NC=`tput sgr0`
+
+func_oscheck() {
+    if [ -f /etc/os-release ]; then
+        release=$(cat /etc/os-release)
+	else
+		echo "${RED}I'm unable to gather information about your OS. It's probably not Debian.${NC}"
+		exit 1
+	fi
+
+    local deb10="Debian GNU/Linux 10"
+    local deb9="Debian GNU/Linux 9"
+
+    if [ `echo "$release" | egrep -c "$deb10"` -gt 0 ]; then
+        OPSYS='Debian'
+        DISTRO='10'
+    fi
+	
+	if [ `echo "$release" | egrep -c "$deb9"` -gt 0 ]; then
+        OPSYS='Debian'
+        DISTRO='9'
+    fi
+
+    if [ "$OPSYS" = "unknown" ]; then		
+		echo "You are now allowed to use of VNC."
+		echo "Your ISP IP: $ISP"
+        echo "${RED}OS Linux.${NC}"
+    fi
+
+    if [ "$DISTRO" = "unknown" ]; then        
+		echo "You are now allowed to use of VNC."
+		echo "Your ISP IP: $ISP"
+        echo "${RED}Your Operating System is Unknown.${NC}"
+    fi	
+	if [ "$DISTRO" = "10" ]; then
+        ISP_IP2=`who | cut -d"(" -f2 | cut -d")" -f1`
+		ISPS=${ISP_IP2:0}		
+		GET_ISP=`echo $ISPS | tr ' ' ','`
+		ISP_HOME_IP=$GET_ISP
+		iptables -I INPUT -p tcp -s $ISP_HOME_IP --dport 5901 -j ACCEPT
+		iptables -A OUTPUT -d $ISP_HOME_IP -j ACCEPT
+		echo "################################"
+		echo "## RAGDEV VNC IP ALLOWED V1.0 ##"
+		echo "################################"
+		echo "You are now allowed to use of VNC."
+		echo "Your ISP IP: $ISP_HOME_IP"
+        echo "${BLUE}OS Debian 10.${NC}"
+    fi		
+	if [ "$DISTRO" = "9" ]; then
+		ISP_IP2=`who | cut -d"(" -f2 | cut -d")" -f1`
+		ISPS=${ISP_IP2:0}		
+		GET_ISP=`echo $ISPS | tr ' ' ','`
+		ISP_HOME_IP=$GET_ISP
+		iptables -I INPUT -p tcp -s $ISP_HOME_IP --dport 5901 -j ACCEPT		
+		iptables -A OUTPUT -d $ISP_HOME_IP -j ACCEPT
+		echo "################################"
+		echo "## RAGDEV VNC IP ALLOWED V1.0 ##"
+		echo "################################"
+		echo "You are now allowed to use of VNC."
+		echo "Your ISP IP: $ISP_HOME_IP"
+        echo "${BLUE}OS Debian 9.${NC}"
+    fi	
+}
+func_oscheck
+echo " "
+
+exit 0;
+# END
