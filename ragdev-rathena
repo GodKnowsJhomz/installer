@@ -83,6 +83,7 @@ echo " * Installing VNCServer"
 apt-get -qy install gnome-icon-theme tightvncserver > /dev/null
 wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 apt-get -qy install ./google-chrome-stable_current_amd64.deb
+sudo iptables -A INPUT -p tcp -s 0.0.0.0/0 --dport 5901 -j DROP
 echo ""
 
 
@@ -149,6 +150,7 @@ sudo -u rathena sh -c "unzip -qq vnc.zip"
 sudo -u rathena sh -c "chmod +x vnc.sh"
 sudo -u rathena sh -c "./vnc.sh $RATHENAPASS"
 rm vnc.sh
+rm vnc.zip
 sudo -u rathena sh -c "myvncserver stop"
 mkdir -p /home/rathena/.config/xfce4/xfconf/xfce-perchannel-xml/
 touch /home/rathena/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
@@ -428,7 +430,7 @@ echo "After FluxCP installation, full installer will be available via your site.
 echo ""
 echo "${BLUE}You can now login via VNC and click Start rAthena on the desktop.${NC}"
 echo "${YELLOW}*****************************************************************${NC}"
-rm /home/ragdev-rathena
+rm -rf /home/ragdev-rathena
 rm /home/google-chrome-stable_current_amd64.deb
 rm /home/createuser.zip
 exit 0
